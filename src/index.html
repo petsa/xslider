@@ -26,10 +26,12 @@
         </ul>
     </div>
     <!-- }宽屏幻灯片 -->
-
+    <br>
+    <br>
+    <br>
 
     <!-- 幻灯片自定义handler{ -->
-    <div class="m-wslider-ctn" id="ting">
+    <div class="m-wslider-ctn" id="grace">
         <ul class="m-wslider-bd" data-role="bd">
             <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner01.jpg" alt=""></a></li>
             <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner02.jpg" alt=""></a></li>
@@ -42,14 +44,36 @@
         </ul>
     </div>
     <!-- }幻灯片自定义handler -->
+    <br>
+    <br>
+    <br>
+
+    <!-- 带next，pre按钮{ -->
+    <div class="m-wslider-ctn" id="alice">
+        <ul class="m-wslider-bd" data-role="bd">
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner01.jpg" alt=""></a></li>
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner02.jpg" alt=""></a></li>
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1408/1931.jpg" alt=""></a></li>
+        </ul>
+        <div class="m-wslider-handler"  data-role="handler">
+            <span class="prev" data-role="prev">上一张</span>
+            <span class="next" data-role="next">下一张</span>
+        </div>
+    </div>
+    <!-- }带next，pre按钮 -->
     <script>
     PI.wideslider({
         sliderId : "#bobo"
     })
 
+    PI.wideslider({
+        sliderId : "#alice",
+        effect:"scroll",
+        during:600
+    })
 
     PI.wideslider({
-        sliderId : "#ting",
+        sliderId : "#grace",
         effect:"scroll",
         trigger : "#content-foot",
         during:600

@@ -20,6 +20,9 @@ var PI = PI ? PI : {};
 			sliderHeight : "",
 			scrollDistance : 0,
 			autoClock : "",
+			autoPlayTimer : "",
+			nextBtn : "",
+			prevBtn : "",
 			/**
 			 * [getSliderLength 获取幻灯片长度]
 			 * @return {[type]} [description]
@@ -81,8 +84,7 @@ var PI = PI ? PI : {};
 			},
 			/*幻灯片初始化*/
 			sliderInit : function(){
-				var _this = this,
-					timeout = "";
+				var _this = this;
 				//设置当前trigger
 				if( _this.getWideTriggers() ){
 					this.wideTriggers.eq(opts.currentSlideNum).addClass('current');
@@ -104,17 +106,27 @@ var PI = PI ? PI : {};
 					if( index == opts.currentSlideNum ){
 						return;
 					}
-					clearInterval( _this.autoClock );
-					clearTimeout( timeout );
 					_this.changeControl( parseInt( $(this).attr("data-indent") ) );
+					_this.blockAutoplay();
 					event.preventDefault();
-					timeout = setTimeout(function(){
-										_this.autoSwitch();
-									},5000);
 					/* Act on the event */
 				});
+				this.prevBtn = this.ctn.find('[data-role="prev"]'),
+				this.nextBtn = this.ctn.find('[data-role="next"]');
 				_this.changeControl(0);
 				_this.autoSwitch();
+			},
+			/**
+			 * [blockAutoplay 用户操作中，禁止自动播放]
+			 * @return {[type]} [description]
+			 */
+			blockAutoplay : function(){
+					var _this = this;
+				clearInterval( _this.autoClock );
+				clearTimeout( _this.autoPlayTimer );
+				_this.autoPlayTimer = setTimeout(function(){
+					_this.autoSwitch();
+				},500);
 			},
 			/**
 			 * [changeControl 切换控制中心，根据不同参数，调用不用切换方法]
@@ -123,6 +135,29 @@ var PI = PI ? PI : {};
 			 */
 			changeControl : function(index){
 				var _this = this;
+				if( index >= _this.sliderLength ){
+					index = 0;
+				}
+				else if( index < 0 ){
+					index = _this.sliderLength - 1;
+				}
+				else{
+					index = index;
+				}
+
+				if( index == _this.sliderLength - 1 ){
+					this.prevBtn.removeClass('none');
+					this.nextBtn.addClass('none');
+				}
+				else if( index == 0 ){
+					this.nextBtn.removeClass('none');
+					this.prevBtn.addClass('none');
+				}
+				else{
+					this.nextBtn.removeClass('none');
+					this.prevBtn.removeClass('none');
+				}
+
 				switch( opts.effect ){
 					case "fade":
 						_this.fadeChange(index);
@@ -208,6 +243,7 @@ var PI = PI ? PI : {};
 				}
 				else{
 					var _childrens = this.ctn.find('[data-role="trigger"]');
+					var triggerNum = this.getSliderLength();
 					_childrens.each(function(index, el) {
 						$(this).attr("data-indent",index);
 					});
@@ -228,10 +264,36 @@ var PI = PI ? PI : {};
 					},5000)
 				}
 			},
+			creatHandler : function(){
+				var handler = this.ctn.find('[data-role="handler"]'),
+					_this = this;
+				handler.on('click', '.next', function(event) {
+					if( $(this).hasClass('none') ){
+						return;
+					}
+					_this.blockAutoplay();
+					_this.changeControl( opts.currentSlideNum + 1 );
+					event.preventDefault();
+					/* Act on the event */
+				});
+				handler.on('click', '.prev', function(event) {
+					if( $(this).hasClass('none') ){
+						return;
+					}
+					_this.blockAutoplay();
+					_this.changeControl( opts.currentSlideNum - 1 );
+					event.preventDefault();
+					/* Act on the event */
+				});
+			},
 			init : function(){
 				this.setsliderHeight();
 				this.setSliderBackground();
+				/*幻灯片*/
 				this.creatTrigger();
+				/*上下图片事件绑定*/
+				this.creatHandler();
+				console.log( wideslider );
 			}
 		}
 		//初始化
@@ -246,6 +308,8 @@ var PI = PI ? PI : {};
 			}
 			/* Act on the event */
 		});
+
+		return wideslider;
 	}
 
 })(window,jQuery,PI)

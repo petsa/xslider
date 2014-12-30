@@ -56,7 +56,7 @@ body {
 .m-wslider-ft{
     position: absolute;
     bottom: 5px;
-    right: 0px;
+    right: 10px;
     text-align: center;
     z-index: 100;
     li{
@@ -75,6 +75,31 @@ body {
     }
     li.current{
         background-color: #FFBA00;
+    }
+}
+
+.m-wslider-handler{
+    .prev,.next{
+        width: 100px;
+        height: 25px;
+        line-height: 25px;
+        background-color: #FFBA00;
+        position: absolute;
+        top: 50%;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        user-select: none;
+    }
+    .prev{
+        left: 50px;
+    }
+    .next{
+        right: 50px;
+    }
+    .none{
+        background-color: gray;
+        cursor: default;
     }
 }
 

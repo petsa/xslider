@@ -556,7 +556,7 @@ body {
 .m-wslider-ft {
   position: absolute;
   bottom: 5px;
-  right: 0px;
+  right: 10px;
   text-align: center;
   z-index: 100; }
   .m-wslider-ft li {
@@ -576,6 +576,28 @@ body {
     overflow: hidden; }
   .m-wslider-ft li.current {
     background-color: #FFBA00; }
+
+.m-wslider-handler .prev, .m-wslider-handler .next {
+  width: 100px;
+  height: 25px;
+  line-height: 25px;
+  background-color: #FFBA00;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+.m-wslider-handler .prev {
+  left: 50px; }
+.m-wslider-handler .next {
+  right: 50px; }
+.m-wslider-handler .none {
+  background-color: gray;
+  cursor: default; }
 
 .m-wslider-pic {
   position: absolute;
