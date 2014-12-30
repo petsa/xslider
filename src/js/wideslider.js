@@ -100,6 +100,9 @@ var PI = PI ? PI : {};
 					_this.wideSliders.css({
 						opacity: 0
 					});
+					_this.wideSliders.eq(0).css({
+						opacity: 1
+					});
 				}
 				this.ctn.on('click', '[data-role="trigger"]', function(event) {
 					var index = parseInt( $(this).attr("data-indent") );
@@ -113,7 +116,7 @@ var PI = PI ? PI : {};
 				});
 				this.prevBtn = this.ctn.find('[data-role="prev"]'),
 				this.nextBtn = this.ctn.find('[data-role="next"]');
-				_this.changeControl(0);
+				//_this.changeControl(0);
 				_this.autoSwitch();
 			},
 			/**
@@ -121,7 +124,7 @@ var PI = PI ? PI : {};
 			 * @return {[type]} [description]
 			 */
 			blockAutoplay : function(){
-					var _this = this;
+				var _this = this;
 				clearInterval( _this.autoClock );
 				clearTimeout( _this.autoPlayTimer );
 				_this.autoPlayTimer = setTimeout(function(){
