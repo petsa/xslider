@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="多玩游戏">
+    <meta name="description" content="">
+    <title> wideslider </title>
+    <link href="css/global.css" rel="stylesheet">
+    <script src="http://assets.dwstatic.com/common/js/jquery.js"></script>
+    <script src="js/wideslider.js"></script>
+    <style>
+    body{
+        min-height: 1000px;
+    }
+    </style>
+</head>
+<body>
+    <!-- 宽屏幻灯片{ -->
+    <div class="m-wslider-ctn" id="bobo">
+        <ul class="m-wslider-bd" data-role="bd">
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner01.jpg" alt=""></a></li>
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner02.jpg" alt=""></a></li>
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1408/1931.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <!-- }宽屏幻灯片 -->
+
+
+    <!-- 幻灯片自定义handler{ -->
+    <div class="m-wslider-ctn" id="ting">
+        <ul class="m-wslider-bd" data-role="bd">
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner01.jpg" alt=""></a></li>
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1206/pic-banner02.jpg" alt=""></a></li>
+            <li data-role="slide"><a href=""><img src="http://huanju.net/s/v1408/1931.jpg" alt=""></a></li>
+        </ul>
+        <ul class="m-wslider-pic" data-role="ft" id="content-foot">
+            <li data-role="trigger"><a href=""><img src="http://huanju.net/s/v1206/pic-banner01.jpg" alt=""></a></li>
+            <li data-role="trigger"><a href=""><img src="http://huanju.net/s/v1206/pic-banner02.jpg" alt=""></a></li>
+            <li data-role="trigger"><a href=""><img src="http://huanju.net/s/v1408/1931.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <!-- }幻灯片自定义handler -->
+    <script>
+    PI.wideslider({
+        sliderId : "#bobo"
+    })
+
+
+    PI.wideslider({
+        sliderId : "#ting",
+        effect:"scroll",
+        trigger : "#content-foot",
+        during:600
+    })
+    </script>
+</body>
+</html>

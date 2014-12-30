@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+@import "lego/lego";
+html {
+    overflow-y: scroll;
+}
+body {
+    font: #{$base-font-size}/#{$base-line-height} $base-font-family;
+    color: $base-color;
+    a {
+        text-decoration: none;
+        color: nth($base-link-color,1);
+        &:hover {
+            text-decoration: underline;
+            color: nth($base-link-color,2);
+        }
+    }
+}
+
+/* wideslider */
+
+.m-wslider-ctn{
+    height: 330px;
+    overflow: hidden;
+    position: relative;
+    *zoom: 1;
+    background-color: #333;
+}
+
+.m-wslider-bd{
+    height: 100%;
+    li{
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        opacity: 0;
+        a{
+            display: block;
+            height: 100%;
+        }
+        img{
+            height: 0px;
+            width: 0px;
+        }
+    }
+    li.current{
+        opacity: 1;
+        z-index: 10;
+    }
+}
+
+.m-wslider-ft{
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+    text-align: center;
+    z-index: 100;
+    li{
+        height: 20px;
+        width: 30px;
+        background-color: #e1e1e1;
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block; *display: inline; *zoom: 1;
+        text-align: center;
+        margin: 0 3px;
+        cursor: pointer;
+        text-indent: -100%;
+        overflow: hidden;
+    }
+    li.current{
+        background-color: #FFBA00;
+    }
+}
+
+.m-wslider-pic{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    z-index: 100;
+    li{
+        display: inline-block; *display: inline; *zoom: 1;
+        font-size: 0px;
+        margin: 2px 7px;
+        img{
+            width: 150px;
+            height: 50px;
+        }
+    }
+    li.current{
+        margin: 0px 5px;
+        border: 2px solid #FFBA00;
+    }
+}
+
